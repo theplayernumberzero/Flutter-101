@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tasarim_calismasi/renkler.dart';
 
@@ -25,34 +28,67 @@ class _AnasayfaState extends State<Anasayfa> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
-            child: Image.asset("resimler/pizza_resim.png",width: 350,height: 350,),
+            child: Image.asset("resimler/pizza_resim.png",width: 250,height: 250,),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(onPressed: (){},
-                    style: TextButton.styleFrom(backgroundColor: anaRenk),
-                    child: Text("Cheese", style: TextStyle(color: yaziRenk1),),
+                Chip(icerik: "Cheese"),
+                Chip(icerik: "Sausage"),
+                Chip(icerik: "Olive"),
+                Chip(icerik: "Pepper"),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Text("30 min", style: TextStyle(fontSize: 22, color: yaziRenk2, fontWeight: FontWeight.bold),),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text("Delivery", style: TextStyle(fontSize: 22, color: anaRenk, fontWeight: FontWeight.bold),),
                 ),
-                TextButton(onPressed: (){},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text("Sausage", style: TextStyle(color: yaziRenk1),),
-                ),
-                TextButton(onPressed: (){},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text("Olive", style: TextStyle(color: yaziRenk1),),
-                ),
-                TextButton(onPressed: (){},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text("Pepper", style: TextStyle(color: yaziRenk1),),
+                Text("Pizza lover, get ready to meet your pizza!",
+                  style: TextStyle(fontSize: 22, color: yaziRenk2),
+                  textAlign: TextAlign.center,),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Text("\$12.99", style: TextStyle(fontSize: 44, color: anaRenk, fontWeight: FontWeight.bold),),
+                SizedBox(width: 200, height: 50,
+                  child: TextButton(onPressed: (){},
+                    style: TextButton.styleFrom(
+                        backgroundColor: anaRenk,
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
+                    ),
+                    child: Text("ADD TO CART", style: TextStyle(color: yaziRenk1, fontSize: 18),),
+                  ),
                 ),
               ],
             ),
           ),
         ],
       )
+    );
+  }
+}
+
+class Chip extends StatelessWidget {
+  String icerik;
+  Chip({required this.icerik});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(onPressed: (){},
+      style: TextButton.styleFrom(backgroundColor: anaRenk),
+      child: Text(icerik, style: TextStyle(color: yaziRenk1),),
     );
   }
 }
