@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tasarim_calismasi/renkler.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class Anasayfa extends StatefulWidget {
   const Anasayfa({super.key});
@@ -18,6 +19,8 @@ class _AnasayfaState extends State<Anasayfa> {
     final double ekranYuksekligi = ekranBilgisi.size.height;
     final double ekranGenisligi = ekranBilgisi.size.width;
 
+    var d = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Pizza", style: TextStyle(color: yaziRenk1, fontFamily: "Pacifico", fontSize: ekranGenisligi/19)),
@@ -28,7 +31,7 @@ class _AnasayfaState extends State<Anasayfa> {
         children: [
           Padding(
             padding: EdgeInsets.only(top: ekranYuksekligi/43),
-            child: Text("Lominos", style: TextStyle(fontSize: 36, color: anaRenk, fontWeight: FontWeight.bold),),
+            child: Text(d!.pizzaBaslik, style: TextStyle(fontSize: 36, color: anaRenk, fontWeight: FontWeight.bold),),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
@@ -39,10 +42,10 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Chip(icerik: "Cheese"),
-                Chip(icerik: "Sausage"),
-                Chip(icerik: "Olive"),
-                Chip(icerik: "Pepper"),
+                Chip(icerik: d.peynirYazi),
+                Chip(icerik: d.sucukYazi),
+                Chip(icerik: d.zeytinYazi),
+                Chip(icerik: d.biberYazi),
               ],
             ),
           ),
@@ -50,12 +53,12 @@ class _AnasayfaState extends State<Anasayfa> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Text("30 min", style: TextStyle(fontSize: 22, color: yaziRenk2, fontWeight: FontWeight.bold),),
+                Text(d.teslimatSure, style: TextStyle(fontSize: 22, color: yaziRenk2, fontWeight: FontWeight.bold),),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("Delivery", style: TextStyle(fontSize: 22, color: anaRenk, fontWeight: FontWeight.bold),),
+                  child: Text(d.teslimatBaslik, style: TextStyle(fontSize: 22, color: anaRenk, fontWeight: FontWeight.bold),),
                 ),
-                Text("Pizza lover, get ready to meet your pizza!",
+                Text(d.pizzaAciklama,
                   style: TextStyle(fontSize: 22, color: yaziRenk2),
                   textAlign: TextAlign.center,),
               ],
@@ -66,14 +69,14 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("\$12.99", style: TextStyle(fontSize: 44, color: anaRenk, fontWeight: FontWeight.bold),),
+                Text(d.fiyat, style: TextStyle(fontSize: 44, color: anaRenk, fontWeight: FontWeight.bold),),
                 SizedBox(width: ekranGenisligi/2, height: ekranYuksekligi/14,
                   child: TextButton(onPressed: (){},
                     style: TextButton.styleFrom(
                         backgroundColor: anaRenk,
                         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
                     ),
-                    child: Text("ADD TO CART", style: TextStyle(color: yaziRenk1, fontSize: 18),),
+                    child: Text(d.buttonYazi, style: TextStyle(color: yaziRenk1, fontSize: 18),),
                   ),
                 ),
               ],
