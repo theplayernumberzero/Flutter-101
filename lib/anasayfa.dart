@@ -14,16 +14,20 @@ class Anasayfa extends StatefulWidget {
 class _AnasayfaState extends State<Anasayfa> {
   @override
   Widget build(BuildContext context) {
+    var ekranBilgisi = MediaQuery.of(context);
+    final double ekranYuksekligi = ekranBilgisi.size.height;
+    final double ekranGenisligi = ekranBilgisi.size.width;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pizza", style: TextStyle(color: yaziRenk1, fontFamily: "Pacifico", fontSize: 22)),
+        title: Text("Pizza", style: TextStyle(color: yaziRenk1, fontFamily: "Pacifico", fontSize: ekranGenisligi/19)),
         backgroundColor: anaRenk,
         centerTitle: true,
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: EdgeInsets.only(top: ekranYuksekligi/43),
             child: Text("Lominos", style: TextStyle(fontSize: 36, color: anaRenk, fontWeight: FontWeight.bold),),
           ),
           Padding(
@@ -60,9 +64,10 @@ class _AnasayfaState extends State<Anasayfa> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text("\$12.99", style: TextStyle(fontSize: 44, color: anaRenk, fontWeight: FontWeight.bold),),
-                SizedBox(width: 200, height: 50,
+                SizedBox(width: ekranGenisligi/2, height: ekranYuksekligi/14,
                   child: TextButton(onPressed: (){},
                     style: TextButton.styleFrom(
                         backgroundColor: anaRenk,
